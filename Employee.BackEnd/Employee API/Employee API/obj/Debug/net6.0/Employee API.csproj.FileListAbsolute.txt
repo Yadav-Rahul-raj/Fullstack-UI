@@ -63,3 +63,4 @@ D:\rr\Fullstack UI\Employee.BackEnd\Employee API\Employee API\obj\Debug\net6.0\r
 D:\rr\Fullstack UI\Employee.BackEnd\Employee API\Employee API\obj\Debug\net6.0\Employee API.pdb
 D:\rr\Fullstack UI\Employee.BackEnd\Employee API\Employee API\obj\Debug\net6.0\Employee API.genruntimeconfig.cache
 D:\rr\Fullstack UI\Employee.BackEnd\Employee API\Employee API\obj\Debug\net6.0\ref\Employee API.dll
+D:\rr\Fullstack UI\Employee.BackEnd\Employee API\Employee API\obj\Debug\net6.0\Employee API.sourcelink.json

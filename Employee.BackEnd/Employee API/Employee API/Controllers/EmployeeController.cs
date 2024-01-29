@@ -21,8 +21,8 @@ namespace Employee_API.Controllers
            var employees =  await _employee.Employees.ToListAsync();
             return Ok(employees);
         }
-
-        [HttpPost]
+        
+        [HttpPost("add")]
         public async Task<IActionResult> AddEmplouee([FromBody]Employee employee)
         {
             employee.Id = Guid.NewGuid();
