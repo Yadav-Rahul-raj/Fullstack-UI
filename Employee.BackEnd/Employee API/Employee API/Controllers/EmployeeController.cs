@@ -22,13 +22,28 @@ namespace Employee_API.Controllers
             return Ok(employees);
         }
         
-        [HttpPost("add")]
+        [HttpPost]
+        [Route("add")]
         public async Task<IActionResult> AddEmplouee([FromBody]Employee employee)
         {
             employee.Id = Guid.NewGuid();
             await _employee.Employees.AddAsync(employee);
             await _employee.SaveChangesAsync();
 
+            return Ok(employee);
+        }
+
+        [HttpGet]
+        [Route("{id:Guid}")]
+
+        public async Task<IActionResult> GetEmployeeById([FromBody] Guid id)
+        {
+            var employee = await _employee.Employees.FirstOrDefaultAsync(x => x.Id == id);
+
+            if(employee == null)
+            {
+                return NotFound();
+            }
             return Ok(employee);
         }
     }
