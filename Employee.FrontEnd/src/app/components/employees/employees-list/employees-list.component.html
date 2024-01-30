@@ -21,7 +21,7 @@
                 <td>{{employee.phone}}</td>
                 <td>{{employee.salary}}</td>
                 <td>{{employee.department}}</td>
-                <td><a [routerLink]="['/employees','edit',employee.id]" routerLinkActive="router-link-active" >View</a></td>
+                <td><button class="btn btn-warning" [routerLink]="['/employees','edit',employee.id]" routerLinkActive="router-link-active" >View</button></td>
             </tr>
         </tbody>
 

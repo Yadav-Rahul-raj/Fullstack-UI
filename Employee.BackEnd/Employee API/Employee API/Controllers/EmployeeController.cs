@@ -36,7 +36,7 @@ namespace Employee_API.Controllers
         [HttpGet]
         [Route("{id:Guid}")]
 
-        public async Task<IActionResult> GetEmployeeById([FromBody] Guid id)
+        public async Task<IActionResult> GetEmployeeById([FromRoute] Guid id)
         {
             var employee = await _employee.Employees.FirstOrDefaultAsync(x => x.Id == id);
 
@@ -46,5 +46,45 @@ namespace Employee_API.Controllers
             }
             return Ok(employee);
         }
+
+
+        [HttpPut]
+        [Route("{id:Guid}")]
+        public async Task<IActionResult> UpdateEmployee([FromRoute] Guid id, Employee updateEmployee)
+        {
+            var employee = await _employee.Employees.FindAsync(id);
+            if(employee == null)
+            {
+                return NotFound();
+            }
+
+            employee.Name = updateEmployee.Name; 
+            employee.Salary = updateEmployee.Salary;
+            employee.Department = updateEmployee.Department;
+            employee.Phone = updateEmployee.Phone;
+
+            await _employee.SaveChangesAsync();
+            return Ok(employee);
+        }
+
+        [HttpDelete]
+        [Route("{id:Guid}")]
+        public async Task<IActionResult> DeleteEmployee([FromRoute] Guid id)
+        {
+            var employeeExist = await _employee.Employees.FindAsync(id);
+
+            if(employeeExist == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                _employee.Remove(employeeExist);
+                await _employee.SaveChangesAsync();
+               
+                return Ok(employeeExist);
+            }
+        }
+
     }
 }
